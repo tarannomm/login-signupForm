@@ -1,0 +1,21 @@
+@mixin boxStyle($width, $height, $bg, $radius) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+  @if ($radius!=0) {
+    border-radius: $radius;
+  }
+}
+@mixin imgStyle($width, $height, $radius) {
+  width: $width;
+  height: $height;
+  overflow: hidden;
+  @if ($radius!=0) {
+    border-radius: $radius;
+  }
+}
+@mixin textStyle($size, $color, $weight) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}

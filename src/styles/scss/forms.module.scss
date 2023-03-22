@@ -1,0 +1,101 @@
+@import "mixin";
+@import "variables";
+body {
+  background: linear-gradient(
+    20deg,
+    rgb(130, 81, 182) 0%,
+    rgb(161, 120, 204) 21%,
+    rgba(227, 220, 231, 1) 100%
+  );
+}
+.container {
+  margin: 90px auto;
+  @include boxStyle(720px, 470px, $color1, 5px);
+  display: flex;
+  box-shadow: 0 0 5px 1.5px $color4;
+}
+.imgContainer {
+  @include imgStyle(46%, 100%, 0);
+  background-image: url("../../images/bg.jpg");
+  border-radius: 5px 0 0 5px;
+  background-size: cover;
+  color: $color1;
+  text-align: center;
+  padding: 110px 30px;
+  h1 {
+    padding: 20px;
+  }
+
+  button {
+    @include boxStyle(160px, 40px, transparent, 30px);
+    @include textStyle(16px, $color2, 100);
+    border: 1px solid $color2;
+    margin: 30px;
+    &:hover {
+      background-color: $color3;
+    }
+  }
+}
+.formContainer {
+  padding:30px 40px;
+  h2 {
+    @include textStyle(27px, $color3, bold);
+    padding:0px 50px 25px;
+  }
+  button {
+   @include boxStyle(160px, 40px,$color5, 30px);
+   @include textStyle(16px, $color4, 100);
+   
+   border: none;
+    
+   margin:20px 65px;
+   &:hover {
+     background-color: $color3;
+   }
+ }
+ 
+}
+.infoContainer div {
+  display: flex;
+  @include textStyle(15px, $color3, normal);
+  padding:10px;}
+  .infoContainer div:not(.checkContainer){
+	position: relative;
+flex-direction: column;
+ 
+   &:focus-within {
+       label {
+           top: 0; 
+           
+       }
+   }
+ 
+	label{
+      display: flex;
+      align-items: center;
+		position: absolute;
+		pointer-events: none;
+		top:20px;
+		left:24px;
+		transition: all 0.1s ease;
+      background-color: $color2;
+	}
+   input{
+      @include boxStyle(280px,43px,transparent,20px) ;
+      @include textStyle(16px,$color5,100);
+      border: 1px solid $color3;
+      outline: none;
+      padding-left:20px; 
+}}
+
+.infoContainer .checkContainer {
+   flex-direction: row;
+   label{
+    width:fit-content; 
+   }
+   input{
+      margin: 2px;
+   }
+
+ }
+
