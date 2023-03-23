@@ -9,15 +9,16 @@ body {
   );
 }
 .container {
-  margin: 90px auto;
+  margin:75px auto;
   @include boxStyle(720px, 470px, $color1, 5px);
   display: flex;
+  flex-direction: row-reverse;
   box-shadow: 0 0 5px 1.5px $color4;
 }
 .imgContainer {
   @include imgStyle(46%, 100%, 0);
   background-image: url("../../images/bg.jpg");
-  border-radius: 5px 0 0 5px;
+  border-radius: 0 5px 5px 0;
   background-size: cover;
   color: $color1;
   text-align: center;
@@ -26,29 +27,31 @@ body {
     padding: 20px;
   }
 
-  button {
+  a {
+    display:inline-block;
+    padding-top: 10px;
+    text-decoration: none;
     @include boxStyle(160px, 40px, transparent, 30px);
     @include textStyle(16px, $color2, 100);
     border: 1px solid $color2;
-    margin: 30px;
+    margin: 37px;
     &:hover {
       background-color: $color3;
     }
   }
 }
 .formContainer {
-  padding:30px 40px;
+  padding:35px 40px ;
+  text-align: center;
   h2 {
     @include textStyle(27px, $color3, bold);
-    padding:0px 50px 25px;
+    padding-bottom: 25px;
   }
   button {
    @include boxStyle(160px, 40px,$color5, 30px);
    @include textStyle(16px, $color4, 100);
-   
    border: none;
-    
-   margin:20px 65px;
+   margin: 7px 0;
    &:hover {
      background-color: $color3;
    }
@@ -58,12 +61,12 @@ body {
 .infoContainer div {
   display: flex;
   @include textStyle(15px, $color3, normal);
-  padding:10px;}
+  padding:12px;}
   .infoContainer div:not(.checkContainer){
 	position: relative;
 flex-direction: column;
  
-   &:focus-within {
+   &:focus-within{
        label {
            top: 0; 
            
@@ -90,12 +93,13 @@ flex-direction: column;
 
 .infoContainer .checkContainer {
    flex-direction: row;
+
    label{
     width:fit-content; 
    }
    input{
-      margin: 2px;
+      margin: 3px;
+      accent-color:$color3;
    }
-
  }
 
