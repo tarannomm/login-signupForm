@@ -5,6 +5,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
+import { validate } from "./functions/Validate";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -22,6 +23,7 @@ const Signup = () => {
       setData({...data,[event.target.id]:event.target.value});
     }
   }
+  const errors=validate(data,"signUp")
   
   return (
     <form className={styles.container}>
@@ -41,6 +43,7 @@ const Signup = () => {
               <BsPersonCircle /> name
             </label>
             <input type="text" id="name" name="name" value={data.name} onChange={changeHandler}/>
+             
           </div>
           <div className={styles.emailContainer}>
             <label htmlFor="email">
