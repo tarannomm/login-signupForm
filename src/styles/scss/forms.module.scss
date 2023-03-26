@@ -45,7 +45,7 @@ body {
   text-align: center;
   h2 {
     @include textStyle(27px, $color3, bold);
-    padding-bottom: 25px;
+    padding-bottom: 20px;
   }
   button {
    @include boxStyle(160px, 40px,$color5, 30px);
@@ -60,8 +60,9 @@ body {
 }
 .infoContainer div {
   display: flex;
+  align-items: baseline;
   @include textStyle(15px, $color3, normal);
-  padding:12px;}
+  padding:8px;}
   .infoContainer div:not(.checkContainer){
 	position: relative;
 flex-direction: column;
@@ -89,10 +90,17 @@ flex-direction: column;
       border: 1px solid $color3;
       outline: none;
       padding-left:20px; 
+}
+span{
+  padding-left: 15px;
+  color:rgb(202, 36, 133);
+  text-shadow:0 0 2px rgb(117, 7, 68);
 }}
 
-.infoContainer .checkContainer {
-   flex-direction: row;
+ 
+.infoContainer .checkContainer{
+ 
+  flex-direction: row;
 
    label{
     width:fit-content; 
@@ -102,4 +110,5 @@ flex-direction: column;
       accent-color:$color3;
    }
  }
+  
 

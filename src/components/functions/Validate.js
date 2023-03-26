@@ -3,17 +3,17 @@ export const validate = (data, type) => {
 
   // email validation
   if (!data.email.trim()) {
-    errors.email = "email required!!";
+    errors.email = "email required!";
   } else if (!/\S+@\S+\.\S+/.test(data.email)) {
-    errors.email = "email is not valid!!";
+    errors.email = "email is not valid!";
   } else {
     delete errors.email;
   }
   //password validation
   if (!data.password) {
-    errors.password = "password required!!";
+    errors.password = "password required!";
   } else if (data.password.length < 6) {
-    errors.password = "password must be 6 charecter or more";
+    errors.password = "password must be 6 charecter or more!";
   } else {
     delete errors.password;
   }
@@ -21,15 +21,15 @@ export const validate = (data, type) => {
   if (type === "signUp") {
     //name validation
     if (!data.name.trim()) {
-      errors.name = "username required!!";
+      errors.name = "username required!";
     } else {
       delete errors.name;
     }
     //confirmPassword validation
     if (!data.confirmPassword) {
-      errors.confirmPassword = "confirm your password";
+      errors.confirmPassword = "confirm your password!";
     } else if (data.confirmPassword !== data.password) {
-      errors.confirmPassword = "password do not matched!!";
+      errors.confirmPassword = "password do not matched!";
     } else {
       delete errors.confirmPassword;
     }
@@ -38,7 +38,7 @@ export const validate = (data, type) => {
     if (data.isAccepted) {
       delete errors.isAccepted;
     } else {
-      errors.isAccepted = "accept our regulations";
+      errors.isAccepted = "accept our regulations!";
     }
   }
   return errors;

@@ -15,6 +15,7 @@ const Signup = () => {
     confirm: "",
     check: false,
   });
+  const[touch,setTouch]=useState({});
   const changeHandler = event =>{
     if(event.target.id==="check"){
       setData({...data,[event.target.id]:event.target.checked});
@@ -23,7 +24,10 @@ const Signup = () => {
       setData({...data,[event.target.id]:event.target.value});
     }
   }
-  const errors=validate(data,"signUp")
+  const errors=validate(data,"signUp");
+  const focusHandler=(event)=>{
+    setTouch({...touch,[event.target.id]:true})
+  }
   
   return (
     <form className={styles.container}>
@@ -42,34 +46,39 @@ const Signup = () => {
             <label htmlFor="name">
               <BsPersonCircle /> name
             </label>
-            <input type="text" id="name" name="name" value={data.name} onChange={changeHandler}/>
-             
+            <input type="text" id="name" name="name" value={data.name} onChange={changeHandler} onFocus={focusHandler}/>
+            {errors.name && touch.name && <span>{errors.name}</span>}
           </div>
           <div className={styles.emailContainer}>
             <label htmlFor="email">
               <AiOutlineMail /> email
             </label>
-              <input type="text" id="email" value={data.email} onChange={changeHandler}/>
+              <input type="text" id="email" value={data.email} onChange={changeHandler} onFocus={focusHandler}/>
+            {errors.email && touch.email && <span>{errors.email}</span>}
           </div>
           <div className={styles.passwordContainer}>
             <label htmlFor="pass" className={styles.labels}>
               <RiLockPasswordLine /> password
             </label>
-            <input type="password" id="pass" value={data.pass} onChange={changeHandler}/>
+            <input type="password" id="pass" value={data.pass} onChange={changeHandler} onFocus={focusHandler}/>
+            {errors.password && touch.pass && <span>{errors.password}</span>}
           </div>
           <div className={styles.confirmPassContainer}>
             <label htmlFor="confirm">
               <GiConfirmed /> confirm password
             </label>
-            <input type="password" id="confirm" value={data.confirm} onChange={changeHandler}/>
+            <input type="password" id="confirm" value={data.confirm} onChange={changeHandler} onFocus={focusHandler}/>
+            {errors.confirmPassword && touch.confirm && <span>{errors.confirmPassword}</span>}
           </div>
           <div className={styles.checkContainer}>
+            
             <label htmlFor="check">
               I accept all the terms of privacy policy{" "}
             </label>
-            <input type="checkbox" id="check" value={data.check} onChange={changeHandler}/>
+            <input type="checkbox" id="check" value={data.check} onChange={changeHandler} onFocus={focusHandler}/>
+             
+            {errors.isAccepted && touch.check && <span>{errors.isAccepted}</span>}
           </div>
-          {/* <a src="#">read privacy policy</a> */}
         </div>
         <button>sign up</button>
       </div>
