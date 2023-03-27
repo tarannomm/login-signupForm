@@ -6,6 +6,9 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { notify } from "./shared/toast";
 import { validate } from "./shared/Validate";
 import { ToastContainer } from "react-toastify";
+import firebase from "firebase/compat/app";
+import { firebaseConfig } from "./shared/firebase";
+import { GoogleAuthProvider } from "@firebase/auth";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -89,8 +92,9 @@ const Login = () => {
             </div>
             <button type="submit">login </button>
 
-            <button>
+            <button onClick={()=>firebaseConfig.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}>
               <AiOutlineGooglePlus
+    
                 style={{
                   backgroundColor: "rgb(216, 216, 216)",
                   borderRadius: "50%",
