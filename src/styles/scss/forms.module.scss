@@ -9,8 +9,8 @@ body {
   );
 }
 .container {
-  margin:75px auto;
-  @include boxStyle(720px, 470px, $color1, 5px);
+  margin: 75px auto;
+  @include boxStyle(720px, 470px, $color1, 10px);
   display: flex;
   flex-direction: row-reverse;
   box-shadow: 0 0 5px 1.5px $color4;
@@ -18,7 +18,7 @@ body {
 .imgContainer {
   @include imgStyle(46%, 100%, 0);
   background-image: url("../../images/bg.jpg");
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 10px 10px 0;
   background-size: cover;
   color: $color1;
   text-align: center;
@@ -28,7 +28,7 @@ body {
   }
 
   a {
-    display:inline-block;
+    display: inline-block;
     padding-top: 10px;
     text-decoration: none;
     @include boxStyle(160px, 40px, transparent, 30px);
@@ -41,74 +41,111 @@ body {
   }
 }
 .formContainer {
-  padding:35px 40px ;
+  padding: 35px 40px;
   text-align: center;
   h2 {
     @include textStyle(27px, $color3, bold);
-    padding-bottom: 20px;
+    padding-bottom: 23px;
   }
   button {
-   @include boxStyle(160px, 40px,$color5, 30px);
-   @include textStyle(16px, $color4, 100);
-   border: none;
-   margin: 7px 0;
-   &:hover {
-     background-color: $color3;
-   }
- }
- 
+    @include boxStyle(160px, 40px, $color5, 30px);
+    @include textStyle(16px, $color4, 100);
+    border: none;
+    margin: 7px 0;
+    &:hover {
+      background-color: $color3;
+    }
+  }
 }
 .infoContainer div {
   display: flex;
   align-items: baseline;
   @include textStyle(15px, $color3, normal);
-  padding:8px;}
-  .infoContainer div:not(.checkContainer){
-	position: relative;
-flex-direction: column;
- 
-   &:focus-within{
-       label {
-           top: 0; 
-           
-       }
-   }
- 
-	label{
-      display: flex;
-      align-items: center;
-		position: absolute;
-		pointer-events: none;
-		top:20px;
-		left:24px;
-		transition: all 0.1s ease;
-      background-color: $color2;
-	}
-   input{
-      @include boxStyle(280px,43px,transparent,20px) ;
-      @include textStyle(16px,$color5,100);
-      border: 1px solid $color3;
-      outline: none;
-      padding-left:20px; 
+  padding: 5px;
 }
-span{
-  padding-left: 15px;
-  color:rgb(202, 36, 133);
-  text-shadow:0 0 2px rgb(117, 7, 68);
-}}
+.infoContainer div:not(.checkContainer, .check) {
+  position: relative;
+  flex-direction: column;
+  &:focus-within {
+    label {
+      top: -5px;
+    }
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    pointer-events: none;
+    top: 20px;
+    left: 24px;
+    transition: all 0.1s ease;
+    background-color: $color1;
+  }
+  input {
+    @include boxStyle(280px, 43px, $color1, 20px);
+    @include textStyle(16px, $color5, 100);
+    border: 1px solid $color3;
+    outline: none;
+    padding-left: 20px;
+  }
+  .errorInput {
+    box-shadow: 0 0 5px 0.2px rgb(155, 35, 85);
+  }
+  .correctInput {
+    box-shadow: 0 0 5px 0.2px rgb(67, 123, 243);
+  }
+  //for delete background color in auto complete
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+  }
+}
+span {
+  height: 17px;
+  padding: 3px 0 0 15px;
+  // text-shadow:0 0 2px rgb(117, 7, 68);
+  @include textStyle(12px, rgb(214, 122, 176), normal);
+}
+
+.infoContainer .checkContainer {
+  flex-direction: column;
+  padding: 0 0 0 13px;
+  .check {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    label {
+      width: fit-content;
+    }
+    input {
+      //for costum styling the checkbox input
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: inline-block;
+      @include boxStyle(18px,18px,$color2,50%);
+      border: 1px solid $color3;
+      margin: 4px;
+       
+      &:checked{
+        background-color: $color3;
+        border-color:$color5
+      }
+     
+    }
+  }
+  span{
+    padding:0 0 0 8px;
+  }
+}
+
 
  
-.infoContainer .checkContainer{
- 
-  flex-direction: row;
 
-   label{
-    width:fit-content; 
-   }
-   input{
-      margin: 3px;
-      accent-color:$color3;
-   }
- }
-  
+ 
 

@@ -10,9 +10,9 @@ export const validate = (data, type) => {
     delete errors.email;
   }
   //password validation
-  if (!data.password) {
+  if (!data.pass) {
     errors.password = "password required!";
-  } else if (data.password.length < 6) {
+  } else if (data.pass.length < 6) {
     errors.password = "password must be 6 charecter or more!";
   } else {
     delete errors.password;
@@ -26,16 +26,16 @@ export const validate = (data, type) => {
       delete errors.name;
     }
     //confirmPassword validation
-    if (!data.confirmPassword) {
+    if (!data.confirm) {
       errors.confirmPassword = "confirm your password!";
-    } else if (data.confirmPassword !== data.password) {
+    } else if (data.confirm !== data.pass) {
       errors.confirmPassword = "password do not matched!";
     } else {
       delete errors.confirmPassword;
     }
 
     //checkBox validation
-    if (data.isAccepted) {
+    if (data.check) {
       delete errors.isAccepted;
     } else {
       errors.isAccepted = "accept our regulations!";
