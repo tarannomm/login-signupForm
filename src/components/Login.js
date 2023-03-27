@@ -5,21 +5,23 @@ import { AiOutlineMail, AiOutlineGooglePlus } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { notify } from "./shared/toast";
 import { validate } from "./shared/Validate";
+import { ToastContainer } from "react-toastify";
 
 const Login = () => {
   const [data, setData] = useState({
     email: "",
     pass: "",
   });
-  const [touch, setTouch] = useState({});
   const changeHandler = (event) => {
     setData({ ...data, [event.target.id]: event.target.value });
   };
 
-  const errors = validate(data, "login");
+  const [touch, setTouch] = useState({});
   const focusHandler = (event) => {
     setTouch({ ...touch, [event.target.id]: true });
   };
+  
+  const errors = validate(data, "login");
   const submitHandler = (event) => {
     event.preventDefault();
     if (Object.keys(errors).length) {
@@ -102,6 +104,7 @@ const Login = () => {
             </button>
           </div>
         </div>
+        <ToastContainer/>
       </form>
     </div>
   );
