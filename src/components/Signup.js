@@ -29,38 +29,42 @@ const Signup = () => {
   const focusHandler = (event) => {
     setTouch({ ...touch, [event.target.id]: true });
   };
-  const submitHandler=(event)=>{
+  const submitHandler = (event) => {
     event.preventDefault();
-    if(Object.keys(errors).length){
+    if (Object.keys(errors).length) {
       setTouch({
-        name:true,
-        email:true,
-        pass:true,
-        confirm:true,
-        check:true
-      })
-      notify("error","please complete all of informatin");
+        name: true,
+        email: true,
+        pass: true,
+        confirm: true,
+        check: true,
+      });
+      notify("error", "please complete all of informatin");
+    } else {
+      notify("success", "your account is created!!");
     }
-    else{
-    notify("success", "your account is created!!")
-    }
-  }
+  };
 
   return (
-    <form className={styles.container} onSubmit={submitHandler}>
+    <form
+      className={styles.container}
+      onSubmit={submitHandler}
+      autoComplete="off"
+    >
       <div className={styles.imgContainer}>
         <h1>Welcome!!</h1>
         <p>
           If you already have an account, You can enter your account using your
           personal information!
         </p>
-        <Link to="/login" onClick={()=>document.title="login page"}>sign in</Link>
+        <Link to="/login" onClick={() => (document.title = "login page")}>
+          sign in
+        </Link>
       </div>
       <div className={styles.formContainer}>
         <h2>Create Account</h2>
         <div className={styles.infoContainer}>
           <div className={styles.nameContainer}>
-            
             <input
               className={
                 errors.name
@@ -80,7 +84,6 @@ const Signup = () => {
             <span>{errors.name && touch.name && errors.name}</span>
           </div>
           <div className={styles.emailContainer}>
-            
             <input
               className={
                 errors.email
@@ -88,6 +91,7 @@ const Signup = () => {
                   : styles.correctInput
               }
               type="text"
+              
               id="email"
               value={data.email}
               onChange={changeHandler}
@@ -99,7 +103,6 @@ const Signup = () => {
             <span>{errors.email && touch.email && errors.email}</span>
           </div>
           <div className={styles.passwordContainer}>
-           
             <input
               className={
                 errors.password
@@ -112,13 +115,12 @@ const Signup = () => {
               onChange={changeHandler}
               onFocus={focusHandler}
             />
-             <label htmlFor="pass" >
+            <label htmlFor="pass">
               <RiLockPasswordLine /> password
             </label>
             <span>{errors.password && touch.pass && errors.password}</span>
           </div>
           <div className={styles.confirmPassContainer}>
-            
             <input
               className={
                 errors.confirmPassword
@@ -142,9 +144,7 @@ const Signup = () => {
           </div>
           <div className={styles.checkContainer}>
             <div className={styles.check}>
-              <label>
-                I accept all the terms of privacy policy{" "}
-              </label>
+              <label>I accept all the terms of privacy policy </label>
               <input
                 type="checkbox"
                 id="check"
@@ -152,13 +152,13 @@ const Signup = () => {
                 onChange={changeHandler}
                 onFocus={focusHandler}
               />
-            </div> 
+            </div>
             <span>{errors.isAccepted && touch.check && errors.isAccepted}</span>
           </div>
         </div>
         <button type="submit">sign up</button>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </form>
   );
 };

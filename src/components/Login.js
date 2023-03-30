@@ -37,7 +37,7 @@ const Login = () => {
   };
   return (
     <div>
-      <form className={styles.containerL}>
+      <form className={styles.containerL} autoComplete="off">
         <div className={styles.imgContainer}>
           <h1>Welcome!!</h1>
           <p>
