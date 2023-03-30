@@ -1,4 +1,4 @@
-import React ,{ useState }from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/css/forms.module.css";
 import { AiOutlineMail, AiOutlineGooglePlus } from "react-icons/ai";
@@ -8,8 +8,6 @@ import { validate } from "./shared/Validate";
 import { ToastContainer } from "react-toastify";
 import firebase from "firebase/compat/app";
 import { firebaseConfig } from "./shared/firebase";
-import { GoogleAuthProvider } from "@firebase/auth";
-
 const Login = () => {
   const [data, setData] = useState({
     email: "",
@@ -23,7 +21,7 @@ const Login = () => {
   const focusHandler = (event) => {
     setTouch({ ...touch, [event.target.id]: true });
   };
-  
+
   const errors = validate(data, "login");
   const submitHandler = (event) => {
     event.preventDefault();
@@ -37,27 +35,20 @@ const Login = () => {
       notify("success", "sign in is successfully!");
     }
   };
-
   return (
     <div>
-      <form className={styles.container} style={{ flexDirection: "row" }} onSubmit={submitHandler}>
-        <div
-          className={styles.imgContainer}
-          style={{ borderRadius: "5px 0 0 5px" }}
-        >
+      <form className={styles.containerL}>
+        <div className={styles.imgContainer}>
           <h1>Welcome!!</h1>
           <p>
             If you have'nt any account, You can create your persional account!
           </p>
-          <Link to="/signup">sign up</Link>
+          <Link to="/signup" onClick={()=>document.title="sigup page"}>sign up</Link>
         </div>
         <div className={styles.formContainer}>
           <h2 style={{ margin: "25px" }}>Sign in</h2>
           <div className={styles.infoContainer}>
             <div className={styles.emailContainer}>
-              <label htmlFor="email">
-                <AiOutlineMail /> email
-              </label>
               <input
                 className={
                   errors.email
@@ -70,12 +61,12 @@ const Login = () => {
                 onChange={changeHandler}
                 onFocus={focusHandler}
               />
+              <label htmlFor="email">
+                <AiOutlineMail /> email
+              </label>
               <span>{errors.email && touch.email && errors.email}</span>
             </div>
             <div className={styles.passwordContainer}>
-              <label htmlFor="pass" className={styles.labels}>
-                <RiLockPasswordLine /> password
-              </label>
               <input
                 className={
                   errors.password
@@ -88,13 +79,21 @@ const Login = () => {
                 onChange={changeHandler}
                 onFocus={focusHandler}
               />
-               <span>{errors.password && touch.pass && errors.password}</span>
+              <label htmlFor="pass">
+                <RiLockPasswordLine /> password
+              </label>
+              <span> {errors.password && touch.pass && errors.password}</span>
             </div>
-            <button type="submit">login </button>
+            <button onClick={submitHandler}>login </button>
 
-            <button onClick={()=>firebaseConfig.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}>
+            <button
+              onClick={() =>
+                firebaseConfig.signInWithRedirect(
+                  new firebase.auth.GoogleAuthProvider()
+                )
+              }
+            >
               <AiOutlineGooglePlus
-    
                 style={{
                   backgroundColor: "rgb(216, 216, 216)",
                   borderRadius: "50%",
@@ -104,11 +103,11 @@ const Login = () => {
                   margin: "-4px 10px -3px 0",
                 }}
               />
-              with google 
+              with google
             </button>
           </div>
         </div>
-        <ToastContainer/>
+        <ToastContainer />
       </form>
     </div>
   );

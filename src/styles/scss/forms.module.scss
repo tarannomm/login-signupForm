@@ -7,18 +7,32 @@ body {
     rgb(161, 120, 204) 21%,
     rgba(227, 220, 231, 1) 100%
   );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh ;
 }
-.container {
-  margin: 75px auto;
+.container,
+.containerL {
   @include boxStyle(720px, 470px, $color1, 10px);
   display: flex;
-  flex-direction: row-reverse;
   box-shadow: 0 0 5px 1.5px $color4;
+}
+.container {
+  flex-direction: row-reverse;
+  .imgContainer {
+    border-radius: 0 10px 10px 0;
+  }
+}
+.containerL {
+  flex-direction: row;
+  .imgContainer {
+    border-radius: 10px 0 0 10px;
+  }
 }
 .imgContainer {
   @include imgStyle(46%, 100%, 0);
   background-image: url("../../images/bg.jpg");
-  border-radius: 0 10px 10px 0;
   background-size: cover;
   color: $color1;
   text-align: center;
@@ -26,7 +40,9 @@ body {
   h1 {
     padding: 20px;
   }
-
+  p {
+    margin-bottom: 30px;
+  }
   a {
     display: inline-block;
     padding-top: 10px;
@@ -34,7 +50,6 @@ body {
     @include boxStyle(160px, 40px, transparent, 30px);
     @include textStyle(16px, $color2, 100);
     border: 1px solid $color2;
-    margin: 37px;
     &:hover {
       background-color: $color3;
     }
@@ -66,28 +81,29 @@ body {
 .infoContainer div:not(.checkContainer, .check) {
   position: relative;
   flex-direction: column;
-  &:focus-within {
-    label {
-      top: -5px;
-    }
-  }
-
   label {
     display: flex;
     align-items: center;
     position: absolute;
     pointer-events: none;
-    top: 20px;
+    top:15px;
     left: 24px;
     transition: all 0.1s ease;
     background-color: $color1;
   }
+
   input {
     @include boxStyle(280px, 43px, $color1, 20px);
     @include textStyle(16px, $color5, 100);
     border: 1px solid $color3;
     outline: none;
     padding-left: 20px;
+    
+    &:focus ~ label,
+    &:focus ~ label,
+    &:not([value=""]) ~ label {
+      top: -3px;
+    }
   }
   .errorInput {
     box-shadow: 0 0 5px 0.2px rgb(155, 35, 85);
@@ -128,24 +144,119 @@ span {
       -moz-appearance: none;
       appearance: none;
       display: inline-block;
-      @include boxStyle(18px,18px,$color2,50%);
+      @include boxStyle(18px, 18px, $color2, 50%);
       border: 1px solid $color3;
       margin: 4px;
-       
-      &:checked{
+
+      &:checked {
         background-color: $color3;
-        border-color:$color5
+        border-color: $color5;
       }
-     
     }
   }
-  span{
-    padding:0 0 0 8px;
+  span {
+    padding: 0 0 0 8px;
   }
 }
 
+//responsive codes
+//LARGE
+@include media("L") {
+  .container,
+  .containerL {
+    width: 500px;
+    height: 400px;
+  }
+  .imgContainer {
+    padding: 60px 10px;
+    h1 {
+      font-size: 22px;
+    }
+    a {
+      padding: 4px;
+      @include imgStyle(90px, 25px, 15px);
+      font-size: 14px;
+    }
+  }
+  .formContainer {
+    padding: 15px 25px;
+    h2 {
+      font-size: 23px;
+      padding-bottom: 20px;
+    }
+    button {
+      width: 120px;
+      height: 30px;
+      font-size: 14px;
+    }
+  }
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div span {
+      font-size: 11px;
+      height: 17px;
+    }
+    div:not(.check, .checkContainer) {
+      font-size: 12px;
 
- 
-
- 
-
+      input {
+        width: 200px;
+        height: 35px;
+        font-size: 13px;
+      }
+    }
+    .checkContainer {
+      label {
+        font-size: 11px;
+        padding: 0;
+      }
+      .check input {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}
+////////////////////////////////////////////////////////////////////////////////
+//MEDIUM
+@include media("M") {
+  .container,
+  .containerL {
+    flex-direction: column;
+    width: 260px;
+    height: max-content;
+    .imgContainer {
+      width: 100%;
+      height: 100px;
+      padding: 0;
+      border-radius: 5px 5px 0 0;
+      h1 {
+        font-size: 15px;
+      }
+      p {
+        display: none;
+      }
+      a {
+        font-size: 12px;
+      }
+    }
+  }
+  .formContainer {
+    h2 {
+      font-size: 18px;
+    }
+  }
+  .infoContainer {
+    div span {
+      font-size: 10px;
+      height: 15px;
+    }
+    .checkContainer {
+      label {
+        font-size: 10px;
+      }
+    }
+  }
+}

@@ -19,3 +19,15 @@
   font-weight: $weight;
   color: $color;
 }
+@mixin media($size){
+  @if($size == L){
+   @media (max-width:1023px) {
+      @content;   
+   }
+  }
+  @else if($size == M){
+      @media (max-width:668px) {
+          @content;
+  }
+  }
+}

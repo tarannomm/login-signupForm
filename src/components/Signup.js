@@ -54,15 +54,13 @@ const Signup = () => {
           If you already have an account, You can enter your account using your
           personal information!
         </p>
-        <Link to="/login">sign in</Link>
+        <Link to="/login" onClick={()=>document.title="login page"}>sign in</Link>
       </div>
       <div className={styles.formContainer}>
         <h2>Create Account</h2>
         <div className={styles.infoContainer}>
           <div className={styles.nameContainer}>
-            <label htmlFor="name">
-              <BsPersonCircle /> name
-            </label>
+            
             <input
               className={
                 errors.name
@@ -76,12 +74,13 @@ const Signup = () => {
               onChange={changeHandler}
               onFocus={focusHandler}
             />
+            <label htmlFor="name">
+              <BsPersonCircle /> name
+            </label>
             <span>{errors.name && touch.name && errors.name}</span>
           </div>
           <div className={styles.emailContainer}>
-            <label htmlFor="email">
-              <AiOutlineMail /> email
-            </label>
+            
             <input
               className={
                 errors.email
@@ -94,12 +93,13 @@ const Signup = () => {
               onChange={changeHandler}
               onFocus={focusHandler}
             />
+            <label htmlFor="email">
+              <AiOutlineMail /> email
+            </label>
             <span>{errors.email && touch.email && errors.email}</span>
           </div>
           <div className={styles.passwordContainer}>
-            <label htmlFor="pass" >
-              <RiLockPasswordLine /> password
-            </label>
+           
             <input
               className={
                 errors.password
@@ -112,12 +112,13 @@ const Signup = () => {
               onChange={changeHandler}
               onFocus={focusHandler}
             />
+             <label htmlFor="pass" >
+              <RiLockPasswordLine /> password
+            </label>
             <span>{errors.password && touch.pass && errors.password}</span>
           </div>
           <div className={styles.confirmPassContainer}>
-            <label htmlFor="confirm">
-              <GiConfirmed /> confirm password
-            </label>
+            
             <input
               className={
                 errors.confirmPassword
@@ -130,6 +131,9 @@ const Signup = () => {
               onChange={changeHandler}
               onFocus={focusHandler}
             />
+            <label htmlFor="confirm">
+              <GiConfirmed /> confirm password
+            </label>
             <span>
               {errors.confirmPassword &&
                 touch.confirm &&
@@ -138,7 +142,7 @@ const Signup = () => {
           </div>
           <div className={styles.checkContainer}>
             <div className={styles.check}>
-              <label htmlFor="check" >
+              <label>
                 I accept all the terms of privacy policy{" "}
               </label>
               <input
